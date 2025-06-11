@@ -29,7 +29,18 @@ img {object-fit:contain;}
 			<div style=font-size:0.75em;>Lek Hac Garment Factory Limited</div>
 		</div>
 
-		<div class=b style="height:12em;flex-direction:row;align-items:start;justify-content:space-evenly;padding:1em 0;">
+		<script>
+			function $( n ){ return typeof n == "Object" ? n : document.getElementById( n ) }
+			function enlarge( target ){
+				$( "cover" ).style.display = "block"
+			}
+		</script>
+
+		<div id=cover style=display:none;background:rgba(0,0,0,0.8);z-index:100;position:fixed;width:100vw;height:100vh;left:0;top:0;>
+			<div style="font-size:3em;color:white;position:absolute;right:0;"> &#x2717; </div>
+		</div>
+
+		<div class=b style="height:12em;flex-direction:row;align-items:start;justify-content:space-evenly;padding:1em 0;" onclick="enlarge">
 			<img src=images/henry_outside.jpg style=max-width:48%;height:100%; />
 			<div style=flex-direction:column;width:48%;height:100%;justify-content:space-between;>
 				<img src=images/henry_cabinet_full.jpg style=width:100%;height:49%; />
