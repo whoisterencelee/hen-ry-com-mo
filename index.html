@@ -32,7 +32,7 @@ img {object-fit:contain;}
 		<script>
 			function $( n ){ return typeof n == "Object" ? n : document.getElementById( n ) }
 			function enlarge( event ){
-				$( "cover" ).style.display = "block"
+				$( "cover" ).style.display = "flex"
 				if( event.target.src ){
 					$( "coverimage" ).src = event.target.src
 				}
@@ -42,8 +42,8 @@ img {object-fit:contain;}
 			}
 		</script>
 		<div id=cover style=display:none;background:rgba(0,0,0,0.8);z-index:100;position:fixed;width:100vw;height:100vh;left:0;top:0;flex-direction:column;justify-content:center;align-items:center;>
-			<div style="font-size:3em;color:white;position:absolute;right:0;" onclick="dislarge()"> &#x2717; </div>
-			<img id=coverimage style=margin:2em;height:80vh;width:auto; src="images/henry_outside.jpg" />
+			<div style="font-size:3em;color:white;position:absolute;right:0;top:0" onclick="dislarge()"> &#x2717; </div>
+			<img id=coverimage style=margin:2em;max-width:80vw;max-height:80vh;width:auto; src="images/henry_outside.jpg" />
 		</div>
 
 		<div class=b style="height:12em;flex-direction:row;align-items:start;justify-content:space-evenly;padding:1em 0;" onclick="enlarge(event)">
