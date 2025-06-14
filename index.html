@@ -32,9 +32,17 @@ img {object-fit:contain;}
 		<script>
 			function $( n ){ return typeof n == "Object" ? n : document.getElementById( n ) }
 			function enlarge( event ){
-				$( "cover" ).style.display = "flex"
 				if( event.target.src ){
-					$( "coverimage" ).src = event.target.src
+					$( "cover" ).style.display = "flex"
+					$( "coverimage" ).style.display = "none"
+					$( "covervideo" ).style.display = "none"
+					if( event.target.src.match( /.mp4$/ ) ){
+						$( "covervideosource" ).src = event.target.src
+						$( "covervideo" ).style.display = "block"
+					} else {
+						$( "coverimage" ).src = event.target.src
+						$( "coverimage" ).style.display = "block"
+					}
 				}
 			}
 			function dislarge(){ 
@@ -44,9 +52,12 @@ img {object-fit:contain;}
 		<div id=cover style=display:none;background:rgba(0,0,0,0.8);z-index:100;position:fixed;width:100vw;height:100vh;left:0;top:0;flex-direction:column;justify-content:center;align-items:center;>
 			<div style="font-size:3em;color:white;position:absolute;right:0;top:0" onclick="dislarge()"> &#x2717; </div>
 			<img id=coverimage style=margin:2em;max-width:80vw;max-height:80vh;width:auto; src="images/henry_outside.jpg" />
+			<video id=covervideo controls muted style=margin:2em;max-width:80vw;max-height:80vh;width:auto;>
+				<source id=covervideosource src="videos/goldentime_floor_3_A.mp4" type=video/mp4 />
+			</video>
 		</div>
 
-		<div id=gallery class=b style="height:12em;flex-direction:row;align-items:start;justify-content:space-evenly;padding:1em 0;" onclick="enlarge(event)">
+		<div id=gallery class=b style="height:600px;flex-direction:row;align-items:start;justify-content:space-evenly;padding:10px 0;" onclick="enlarge(event)">
 			<img src=images/henry_outside.jpg style=max-width:48%;height:100%; />
 			<div style=flex-direction:column;width:48%;height:100%;justify-content:space-between;>
 				<img src=images/henry_cabinet.jpg style=width:100%;height:49%; />
@@ -99,12 +110,18 @@ img {object-fit:contain;}
 			<div style=font-size:0.75em;>Golden Time Garment Limited</div>
 		</div>
 
-		<div class=b style="height:12em;flex-direction:row;align-items:start;justify-content:space-evenly;padding:1em 0;" onclick="enlarge(event)">
+		<div class=b style="height:289px;flex-direction:row;align-items:start;justify-content:space-evenly;padding:10px 0;" onclick="enlarge(event)">
 			<img src=images/goldentime_outside.jpg style=max-width:48%;object-fit:cover;height:100%; />
 			<div style=flex-direction:column;width:48%;height:100%;justify-content:space-between;>
 				<img src=images/goldentime_loading.jpg style=width:100%;height:49%; />
 				<img src=images/goldentime_office.jpg style=width:100%;height:49%; />
 			</div>
+		</div>
+		<div class=b style="height:289px;flex-direction:row;align-items:center;justify-content:space-evenly;padding:10px 0;" onclick="enlarge(event)">
+			<video style=max-height:100%;max-width:25%; src=videos/goldentime_floor_3_A.mp4 ></video>
+			<video style=max-height:100%;max-width:25%; src=videos/goldentime_floor_3_B_1.mp4 ></video>
+			<video style=max-height:100%;max-width:25%; src=videos/goldentime_floor_3_B_2.mp4 ></video>
+			<video style=max-height:100%;max-width:25%; src=videos/goldentime_floor_5_B.mp4 ></video>
 		</div>
 
 		<div class=b style="flex-direction:column;padding:1em 0;">
